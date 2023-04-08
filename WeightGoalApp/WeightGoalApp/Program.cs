@@ -1,1 +1,4 @@
-﻿Menu.Run();
+﻿using WeightGoalApp;
+
+
+Menu.Run();
