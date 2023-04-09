@@ -15,7 +15,7 @@ namespace WeightGoalApp
         public float KilogramDifference { get => this.CurrentWeight - this.WeightGoal; }
 
         public int CaloriesDeficit { get; set; }
-        public int NumberOfDays { get; set; }
+  
 
         public abstract void SetCurrentWeight(float currentweight);
         public abstract void SetWeightGoal(float weightgoal);

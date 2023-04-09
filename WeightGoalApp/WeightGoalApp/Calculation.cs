@@ -24,8 +24,7 @@ namespace WeightGoalApp
 
         public Calculation() 
         {
-            this.NumberOfDays = 0;
-            this.CaloriesToGo = 0;
+            
         }
 
         public void AddData(float currentweight, float goalweight, int caloriesdeficit) 
@@ -38,6 +37,10 @@ namespace WeightGoalApp
             this.CaloriesToGo = this.KilogramDifference * KiloFat;
 
             this.NumberOfDays = (int)(CaloriesToGo / CaloriesDeficit);
+
+            this.CurrentWeight = currentweight;
+
+            this.WeightGoal = goalweight;
 
         }
 

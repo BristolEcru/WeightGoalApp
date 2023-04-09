@@ -4,8 +4,10 @@ namespace WeightGoalApp
 {
     public interface IUser
     {
-        //metody
         
+        public void SetCurrentWeight(float currentweight);
+        public void SetWeightGoal(float weightgoal);
+        public void SetCaloriesDeficit(int caloriesdeficit);
 
         public Calculation GetCalculation();
 

@@ -50,7 +50,7 @@ namespace WeightGoalApp
         public void DisplayCalculationInConsoleForLoss()
         {
             var calc = this.GetCalculation();
-            Console.WriteLine($"\n {this.Name}, you wish to lose {(calc.KilogramDifference):N2} kg of fat tissue");
+            Console.WriteLine($"\n {this.Name}, you wish to lose {(calc.KilogramDifference):N1} kg of fat tissue");
             Console.WriteLine($" This is the equivalent of {calc.CaloriesToGo} calories");
             Console.WriteLine($" If you reduce your normal daily intake by {calc.CaloriesDeficit} kcal");
             Console.WriteLine($" You will achievie your goal in {calc.NumberOfDays} days!!!");
@@ -61,7 +61,7 @@ namespace WeightGoalApp
         public void DisplayCalculationInConsoleForGain()
         {
             var calc = this.GetCalculation();
-            Console.WriteLine($"\n {this.Name}, you wish to gain {(-1) * (calc.KilogramDifference):N2} kg of fat tissue");
+            Console.WriteLine($"\n {this.Name}, you wish to gain {(-1) * (calc.KilogramDifference):N1} kg of fat tissue");
             Console.WriteLine($" This is the equivalent of {(-1) * calc.CaloriesToGo} calories");
             Console.WriteLine($" If you increase your normal daily intake by {calc.CaloriesDeficit} kcal");
             Console.WriteLine($" You will achievie your goal in {(-1) * calc.NumberOfDays} days!!!");
@@ -155,7 +155,7 @@ namespace WeightGoalApp
 
         public override void SetCaloriesDeficit(int caloriesdeficit)
         {
-            if (caloriesdeficit > 0 && caloriesdeficit < 1000)
+            if (caloriesdeficit >=100 && caloriesdeficit <= 1000)
             {
                 using (var writer = File.AppendText(fileName))
                 {

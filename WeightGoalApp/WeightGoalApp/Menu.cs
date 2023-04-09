@@ -8,7 +8,7 @@ namespace WeightGoalApp
         public static void Run()
         {
 
-           
+
             void DataAccepted(object sender, EventArgs args)
             {
                 Console.WriteLine("~~~Data accepted~~~");
@@ -23,62 +23,73 @@ namespace WeightGoalApp
 
             do
             {
+                Console.WriteLine("What is your name?");
+                var user = new UserInFile(Console.ReadLine());
 
-                Console.WriteLine("\n What is your name?");
-                var user1 = new UserInFile(Console.ReadLine());
-                user1.SucessfullyAdded += DataAccepted;
+                user.SucessfullyAdded += DataAccepted;
                 Console.WriteLine("What is your body weight?");
                 var input = Console.ReadLine();
-                user1.SetCurrentWeight(input);
+                user.SetCurrentWeight(input);
+
                 Console.WriteLine("And what is you WEIGHT GOAL?");
                 input = Console.ReadLine();
-                user1.SetWeightGoal(input);
-                if (user1.CheckIfGain())
+                user.SetWeightGoal(input);
+
+
+                if (user.CheckIfGain())
                 {
-                    Console.WriteLine("How many calories can you add to your daily food intake (per day) ?");
+                    Console.WriteLine("How many calories (range:1-1000) can you add to your daily food intake (per day) ?");
                     input = Console.ReadLine();
-                    user1.SetCaloriesDeficit(input);
-                    user1.DisplayCalculationInConsoleForGain();
+                    user.SetCaloriesDeficit(input);
+                    user.DisplayCalculationInConsoleForGain();
+
                 }
                 else
                 {
-                    Console.WriteLine("How many calories can you skip in your daily food intake (per day) ?");
+                    Console.WriteLine("How many calories (range:1-1000) can you skip in your daily food intake (per day) ?");
                     input = Console.ReadLine();
-                    user1.SetCaloriesDeficit(input);
-                    user1.DisplayCalculationInConsoleForLoss();
+                    user.SetCaloriesDeficit(input);
+                    user.DisplayCalculationInConsoleForLoss();
+
                 }
 
+
                 Console.WriteLine("Do you want to check again?");
-                Console.WriteLine("1-> YES");
-                Console.WriteLine("2-> idk");
-                Console.WriteLine("3-> End program");
+                Console.WriteLine("y-> YES");
+                Console.WriteLine("n-> End program");
+
                 var choice = Console.ReadLine();
-                int number = 3;
-                try
+                //try
+                //{
+                //    number = Int32.Parse(choice);
+                //}
+                //catch (Exception e)
+                //{
+                //    Console.WriteLine(e.ToString());
+                //    continue;
+                //}
+                switch (choice)
                 {
-                    number = Int32.Parse(choice);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                    continue;
-                }
-                switch (number)
-                {
-                    case 1:
+                    case "y":
                         Console.Clear();
                         break;
-                    case 2:
-                       
-                        break;
-                    case 3:
-                        Console.WriteLine("\n The End");
+                    case "n":
+                        Console.Clear();
+                        Console.WriteLine("\nThe End");
                         return;
+
                     default:
-                        Console.WriteLine("\n Incorrect value, try again ");
-                        break;
+                        Console.Clear();
+                        Console.WriteLine("\nIncorrect value. Press y to try again. Press n to quit");
+                        choice = Console.ReadLine();
+                        if (choice == "y")
+                            break;
+                        else
+                            return;
                 }
             } while (true);
         }
+
     }
 }
+
